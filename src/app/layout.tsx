@@ -1,10 +1,16 @@
 import { Metadata } from 'next';
+import { Outfit } from 'next/font/google';
 import * as React from 'react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/autoplay';
 
 import '@/styles/globals.css';
-// !STARTERCONF This is for demo purposes, remove @/styles/colors.css import immediately
 import '@/styles/colors.css';
 
+import { SidebarProvider } from '@/app/context/SidebarContext';
+import { ThemeProvider } from '@/app/context/ThemeContext';
 import { siteConfig } from '@/constant/config';
 
 // !STARTERCONF Change these default meta
@@ -49,14 +55,23 @@ export const metadata: Metadata = {
   // ],
 };
 
+const outfit = Outfit({
+  variable: '--font-outfit-sans',
+  subsets: ['latin'],
+});
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html>
-      <body>{children}</body>
+    <html lang='en'>
+      <body className={`${outfit.variable} dark:bg-gray-900`}>
+        <ThemeProvider>
+          <SidebarProvider>{children}</SidebarProvider>
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
