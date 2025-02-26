@@ -1,12 +1,11 @@
 // !STARTERCONF You should delete this page
+import { render, screen } from '@testing-library/react';
 
-import { screen } from '@testing-library/react';
-
-// import HomePage from '@/app/page';
+import HomePage from '@/app/(app)/(admin)/page';
 
 describe('Homepage', () => {
   it('renders the Components', () => {
-    // render(<HomePage />);
+    render(<HomePage />);
 
     const heading = screen.getByText(/A starter for Next.js/i);
 
