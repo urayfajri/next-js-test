@@ -1,4 +1,5 @@
 'use client';
+import { Calendar } from 'lucide-react';
 import React, { useState } from 'react';
 import Flatpickr from 'react-flatpickr';
 
@@ -11,7 +12,6 @@ import Label from '../Label';
 import Select from '../Select';
 import ComponentCard from '../../common/ComponentCard';
 import Button from '../../ui/button/Button';
-import { CalenderIcon } from '../../../icons';
 
 export default function ExampleFormTwo() {
   const [selectedOption, setSelectedOption] = useState<string>('Free');
@@ -92,7 +92,7 @@ export default function ExampleFormTwo() {
                 className='w-full py-2 pl-3 pr-10 text-sm border border-gray-300 rounded-md h-11 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-800 dark:border-gray-700 dark:text-white'
               />
               <span className='absolute text-gray-500 -translate-y-1/2 pointer-events-none right-3 top-1/2 dark:text-gray-400'>
-                <CalenderIcon />
+                <Calendar />
               </span>
             </div>
           </div>

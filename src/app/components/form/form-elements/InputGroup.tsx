@@ -1,11 +1,11 @@
 'use client';
 import React from 'react';
+import { ImEnvelop } from 'react-icons/im';
 
 import PhoneInput from '../group-input/PhoneInput';
 import Input from '../input/InputField';
 import Label from '../Label';
 import ComponentCard from '../../common/ComponentCard';
-import { EnvelopeIcon } from '../../../icons';
 
 export default function InputGroup() {
   const countries = [
@@ -30,7 +30,7 @@ export default function InputGroup() {
               className='pl-[62px]'
             />
             <span className='absolute left-0 top-1/2 -translate-y-1/2 border-r border-gray-200 px-3.5 py-3 text-gray-500 dark:border-gray-800 dark:text-gray-400'>
-              <EnvelopeIcon />
+              <ImEnvelop />
             </span>
           </div>
         </div>

@@ -1,4 +1,5 @@
 'use client';
+import { PaperclipIcon } from 'lucide-react';
 import React, { useState } from 'react';
 
 import Form from '../Form';
@@ -8,7 +9,6 @@ import Label from '../Label';
 import Select from '../Select';
 import ComponentCard from '../../common/ComponentCard';
 import Button from '../../ui/button/Button';
-import { PaperPlaneIcon } from '../../../icons';
 
 export default function ExampleFormOne() {
   const [message, setMessage] = useState<string>('');
@@ -75,7 +75,7 @@ export default function ExampleFormOne() {
           <div className='col-span-2'>
             <Button size='sm' className='w-full'>
               Send Message
-              <PaperPlaneIcon />
+              <PaperclipIcon />
             </Button>
           </div>
         </div>

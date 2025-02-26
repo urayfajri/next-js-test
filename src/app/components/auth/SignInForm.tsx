@@ -1,4 +1,5 @@
 'use client';
+import { ChevronLeftIcon, EyeIcon, EyeOffIcon } from 'lucide-react';
 import Link from 'next/link';
 import React, { useState } from 'react';
 
@@ -7,7 +8,6 @@ import Button from '@/components/buttons/Button';
 import Checkbox from '@/app/components/form/input/Checkbox';
 import Input from '@/app/components/form/input/InputField';
 import Label from '@/app/components/form/Label';
-import { ChevronLeftIcon, EyeCloseIcon, EyeIcon } from '@/app/icons';
 
 export default function SignInForm() {
   const [showPassword, setShowPassword] = useState(false);
@@ -110,7 +110,7 @@ export default function SignInForm() {
                       {showPassword ? (
                         <EyeIcon className='fill-gray-500 dark:fill-gray-400' />
                       ) : (
-                        <EyeCloseIcon className='fill-gray-500 dark:fill-gray-400' />
+                        <EyeOffIcon className='fill-gray-500 dark:fill-gray-400' />
                       )}
                     </span>
                   </div>

@@ -1,5 +1,7 @@
 'use client';
+import { ArrowRightIcon, LockIcon, UserIcon } from 'lucide-react';
 import React, { useState } from 'react';
+import { ImEnvelop } from 'react-icons/im';
 
 import Form from '../Form';
 import Checkbox from '../input/Checkbox';
@@ -7,12 +9,6 @@ import Input from '../input/InputField';
 import Label from '../Label';
 import ComponentCard from '../../common/ComponentCard';
 import Button from '../../ui/button/Button';
-import {
-  ArrowRightIcon,
-  EnvelopeIcon,
-  LockIcon,
-  UserIcon,
-} from '../../../icons';
 
 export default function ExampleFormWithIcon() {
   const handleSubmit = (e: React.FormEvent) => {
@@ -45,7 +41,7 @@ export default function ExampleFormWithIcon() {
               className='pl-11'
             />
             <span className='absolute text-gray-500 -translate-y-1/2 pointer-events-none left-4 top-1/2 dark:text-gray-400'>
-              <EnvelopeIcon />
+              <ImEnvelop />
             </span>
           </div>{' '}
           <div className='relative'>

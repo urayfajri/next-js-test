@@ -1,11 +1,11 @@
 'use client';
+import { Calendar, EyeIcon, EyeOffIcon, TimerIcon } from 'lucide-react';
 import React, { useState } from 'react';
 
 import Input from '../input/InputField';
 import Label from '../Label';
 import Select from '../Select';
 import ComponentCard from '../../common/ComponentCard';
-import { CalenderIcon, EyeCloseIcon, EyeIcon, TimeIcon } from '../../../icons';
 
 export default function DefaultInputs() {
   const [showPassword, setShowPassword] = useState(false);
@@ -52,7 +52,7 @@ export default function DefaultInputs() {
               {showPassword ? (
                 <EyeIcon className='fill-gray-500 dark:fill-gray-400' />
               ) : (
-                <EyeCloseIcon className='fill-gray-500 dark:fill-gray-400' />
+                <EyeOffIcon className='fill-gray-500 dark:fill-gray-400' />
               )}
             </button>
           </div>
@@ -68,7 +68,7 @@ export default function DefaultInputs() {
               onChange={(e) => console.log(e.target.value)}
             />
             <span className='absolute text-gray-500 -translate-y-1/2 pointer-events-none right-3 top-1/2 dark:text-gray-400'>
-              <CalenderIcon />
+              <Calendar />
             </span>
           </div>
         </div>
@@ -83,7 +83,7 @@ export default function DefaultInputs() {
               onChange={(e) => console.log(e.target.value)}
             />
             <span className='absolute text-gray-500 -translate-y-1/2 pointer-events-none right-3 top-1/2 dark:text-gray-400'>
-              <TimeIcon />
+              <TimerIcon />
             </span>
           </div>
         </div>

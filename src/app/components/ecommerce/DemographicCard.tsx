@@ -1,8 +1,7 @@
 'use client';
+import { DotIcon } from 'lucide-react';
 import Image from 'next/image';
 import { useState } from 'react';
-
-import { MoreDotIcon } from '@/app/icons';
 
 import CountryMap from './CountryMap';
 import { Dropdown } from '../ui/dropdown/Dropdown';
@@ -33,7 +32,7 @@ export default function DemographicCard() {
 
         <div className='relative inline-block'>
           <button onClick={toggleDropdown} className='dropdown-toggle'>
-            <MoreDotIcon className='text-gray-400 hover:text-gray-700 dark:hover:text-gray-300' />
+            <DotIcon className='text-gray-400 hover:text-gray-700 dark:hover:text-gray-300' />
           </button>
           <Dropdown
             isOpen={isOpen}

@@ -1,25 +1,25 @@
 'use client';
+import {
+  BoxIcon,
+  Calendar,
+  ChevronDownIcon,
+  FlipHorizontal,
+  GridIcon,
+  ListIcon,
+  PieChartIcon,
+  PlugIcon,
+  TableIcon,
+  UserCircleIcon,
+} from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { RiPagesFill } from 'react-icons/ri';
 
 import SidebarWidget from '@/app/layout/SidebarWidget';
 
 import { useSidebar } from '../context/SidebarContext';
-import {
-  BoxCubeIcon,
-  CalenderIcon,
-  ChevronDownIcon,
-  GridIcon,
-  HorizontaLDots,
-  ListIcon,
-  PageIcon,
-  PieChartIcon,
-  PlugInIcon,
-  TableIcon,
-  UserCircleIcon,
-} from '../icons/index';
 
 type NavItem = {
   name: string;
@@ -35,7 +35,7 @@ const navItems: NavItem[] = [
     subItems: [{ name: 'Ecommerce', path: '/', pro: false }],
   },
   {
-    icon: <CalenderIcon />,
+    icon: <Calendar />,
     name: 'Calendar',
     path: '/calendar',
   },
@@ -57,7 +57,7 @@ const navItems: NavItem[] = [
   },
   {
     name: 'Pages',
-    icon: <PageIcon />,
+    icon: <RiPagesFill />,
     subItems: [
       { name: 'Blank Page', path: '/blank', pro: false },
       { name: '404 Error', path: '/error-404', pro: false },
@@ -75,7 +75,7 @@ const othersItems: NavItem[] = [
     ],
   },
   {
-    icon: <BoxCubeIcon />,
+    icon: <BoxIcon />,
     name: 'UI Elements',
     subItems: [
       { name: 'Alerts', path: '/alerts', pro: false },
@@ -87,7 +87,7 @@ const othersItems: NavItem[] = [
     ],
   },
   {
-    icon: <PlugInIcon />,
+    icon: <PlugIcon />,
     name: 'Authentication',
     subItems: [
       { name: 'Sign In', path: '/signin', pro: false },
@@ -352,7 +352,7 @@ const AppSidebar: React.FC = () => {
                 {isExpanded || isHovered || isMobileOpen ? (
                   'Menu'
                 ) : (
-                  <HorizontaLDots />
+                  <FlipHorizontal />
                 )}
               </h2>
               {renderMenuItems(navItems, 'main')}
@@ -369,7 +369,7 @@ const AppSidebar: React.FC = () => {
                 {isExpanded || isHovered || isMobileOpen ? (
                   'Others'
                 ) : (
-                  <HorizontaLDots />
+                  <FlipHorizontal />
                 )}
               </h2>
               {renderMenuItems(othersItems, 'others')}
