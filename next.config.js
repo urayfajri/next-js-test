@@ -40,6 +40,10 @@ const nextConfig = {
           dimensions: false,
           titleProp: true,
         },
+      },
+      {
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
       }
     );
 
