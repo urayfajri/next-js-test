@@ -23,11 +23,11 @@ export default function DefaultInputs() {
       <div className='space-y-6'>
         <div>
           <Label>Input</Label>
-          <Input type='text' />
+          <Input name='name' type='text' />
         </div>
         <div>
           <Label>Input with Placeholder</Label>
-          <Input type='text' placeholder='info@gmail.com' />
+          <Input name='test' type='text' placeholder='info@gmail.com' />
         </div>
         <div>
           <Label>Select Input</Label>
@@ -42,6 +42,7 @@ export default function DefaultInputs() {
           <Label>Password Input</Label>
           <div className='relative'>
             <Input
+              name='password'
               type={showPassword ? 'text' : 'password'}
               placeholder='Enter your password'
             />
@@ -60,13 +61,7 @@ export default function DefaultInputs() {
         <div>
           <Label htmlFor='datePicker'>Date Picker Input</Label>
           <div className='relative'>
-            <Input
-              type='date'
-              id='datePicker'
-              name='datePicker'
-              // eslint-disable-next-line no-console
-              onChange={(e) => console.log(e.target.value)}
-            />
+            <Input type='date' id='datePicker' name='datePicker' />
             <span className='absolute text-gray-500 -translate-y-1/2 pointer-events-none right-3 top-1/2 dark:text-gray-400'>
               <Calendar />
             </span>
@@ -75,13 +70,7 @@ export default function DefaultInputs() {
         <div>
           <Label htmlFor='tm'>Date Picker Input</Label>
           <div className='relative'>
-            <Input
-              type='time'
-              id='tm'
-              name='tm'
-              // eslint-disable-next-line no-console
-              onChange={(e) => console.log(e.target.value)}
-            />
+            <Input type='time' id='tm' name='tm' />
             <span className='absolute text-gray-500 -translate-y-1/2 pointer-events-none right-3 top-1/2 dark:text-gray-400'>
               <TimerIcon />
             </span>
@@ -91,6 +80,7 @@ export default function DefaultInputs() {
           <Label htmlFor='tm'>Input with Payment</Label>
           <div className='relative'>
             <Input
+              name='cardNumber'
               type='text'
               placeholder='Card number'
               className='pl-[62px]'

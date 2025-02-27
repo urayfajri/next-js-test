@@ -1,4 +1,5 @@
-import type { Metadata } from 'next';
+'use client';
+
 import React from 'react';
 
 import DemographicCard from '@/app/components/ecommerce/DemographicCard';
@@ -7,14 +8,9 @@ import MonthlySalesChart from '@/app/components/ecommerce/MonthlySalesChart';
 import MonthlyTarget from '@/app/components/ecommerce/MonthlyTarget';
 import RecentOrders from '@/app/components/ecommerce/RecentOrders';
 import StatisticsChart from '@/app/components/ecommerce/StatisticsChart';
+import withAuth from '@/app/hooks/withAuth';
 
-export const metadata: Metadata = {
-  title:
-    'Next.js E-commerce Dashboard | TailAdmin - Next.js Dashboard Template',
-  description: 'This is Next.js Home for TailAdmin Dashboard Template',
-};
-
-export default function HomePage() {
+function HomePage() {
   return (
     <div className='grid grid-cols-12 gap-4 md:gap-6'>
       <div className='col-span-12 space-y-6 xl:col-span-7'>
@@ -41,3 +37,5 @@ export default function HomePage() {
     </div>
   );
 }
+
+export default withAuth(HomePage);

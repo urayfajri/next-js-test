@@ -17,12 +17,13 @@ import {
   CUSTOMER_TOAST,
 } from '@/app/constants/enums/customer/enum';
 import { DEFAULT_TOAST_MESSAGE } from '@/app/constants/toast';
+import withAuth from '@/app/hooks/withAuth';
 import axiosClient from '@/app/services/axios';
 import { ApiReturnPagination } from '@/app/types/common/type';
 import { DataTableColumn } from '@/app/types/data-table/type';
 import { Customer } from '@/app/types/model/customer/type';
 
-export default function MasterDataCustomer() {
+function MasterDataCustomer() {
   const [isAddModalOpen, setIsAddModalOpen] = React.useState<boolean>(false);
   const [isAlertDeleteOpen, setIsAlertDeleteOpen] =
     React.useState<boolean>(false);
@@ -142,3 +143,5 @@ export default function MasterDataCustomer() {
     </>
   );
 }
+
+export default withAuth(MasterDataCustomer);

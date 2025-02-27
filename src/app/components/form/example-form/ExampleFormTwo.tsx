@@ -63,11 +63,21 @@ export default function ExampleFormTwo() {
           </div>
           <div>
             <Label htmlFor='firstName'>First Name</Label>
-            <Input type='text' placeholder='Enter first name' id='firstName' />
+            <Input
+              name='firstName'
+              type='text'
+              placeholder='Enter first name'
+              id='firstName'
+            />
           </div>
           <div>
             <Label htmlFor='lastName'>Last Name</Label>
-            <Input type='text' placeholder='Enter last name' id='firstName' />
+            <Input
+              name='lastName'
+              type='text'
+              placeholder='Enter last name'
+              id='firstName'
+            />
           </div>
           <div className='col-span-2'>
             <Label htmlFor='email'>Gender</Label>
@@ -113,19 +123,19 @@ export default function ExampleFormTwo() {
           </div>
           <div className='col-span-2'>
             <Label htmlFor='street'>Street</Label>
-            <Input type='text' id='street' />
+            <Input name='street' type='text' id='street' />
           </div>
           <div>
             <Label htmlFor='street'>City</Label>
-            <Input type='text' id='city' />
+            <Input name='city' type='text' id='city' />
           </div>
           <div>
             <Label htmlFor='state'>State</Label>
-            <Input type='text' id='state' />
+            <Input name='state' type='text' id='state' />
           </div>
           <div>
             <Label htmlFor='postCode'>Post Code</Label>
-            <Input type='text' id='postCode' />
+            <Input name='postCode' type='text' id='postCode' />
           </div>
           <div>
             <Label htmlFor='email'>Category</Label>

@@ -79,6 +79,7 @@ export default function SignUpForm() {
                 </Label>
                 <div className='relative'>
                   <Input
+                    name='password'
                     placeholder='Enter your password'
                     type={showPassword ? 'text' : 'password'}
                   />

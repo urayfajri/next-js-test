@@ -115,6 +115,7 @@ export default function UserInfoCard() {
                   <div>
                     <Label>Facebook</Label>
                     <Input
+                      name='facebook'
                       type='text'
                       defaultValue='https://www.facebook.com/PimjoHQ'
                     />
@@ -122,12 +123,17 @@ export default function UserInfoCard() {
 
                   <div>
                     <Label>X.com</Label>
-                    <Input type='text' defaultValue='https://x.com/PimjoHQ' />
+                    <Input
+                      name='x'
+                      type='text'
+                      defaultValue='https://x.com/PimjoHQ'
+                    />
                   </div>
 
                   <div>
                     <Label>Linkedin</Label>
                     <Input
+                      name='linkedin'
                       type='text'
                       defaultValue='https://www.linkedin.com/company/pimjo'
                     />
@@ -136,6 +142,7 @@ export default function UserInfoCard() {
                   <div>
                     <Label>Instagram</Label>
                     <Input
+                      name='instagram'
                       type='text'
                       defaultValue='https://instagram.com/PimjoHQ'
                     />
@@ -150,27 +157,43 @@ export default function UserInfoCard() {
                 <div className='grid grid-cols-1 gap-x-6 gap-y-5 lg:grid-cols-2'>
                   <div className='col-span-2 lg:col-span-1'>
                     <Label>First Name</Label>
-                    <Input type='text' defaultValue='Musharof' />
+                    <Input
+                      name='firstname'
+                      type='text'
+                      defaultValue='Musharof'
+                    />
                   </div>
 
                   <div className='col-span-2 lg:col-span-1'>
                     <Label>Last Name</Label>
-                    <Input type='text' defaultValue='Chowdhury' />
+                    <Input
+                      name='lastName'
+                      type='text'
+                      defaultValue='Chowdhury'
+                    />
                   </div>
 
                   <div className='col-span-2 lg:col-span-1'>
                     <Label>Email Address</Label>
-                    <Input type='text' defaultValue='randomuser@pimjo.com' />
+                    <Input
+                      name='email'
+                      type='text'
+                      defaultValue='randomuser@pimjo.com'
+                    />
                   </div>
 
                   <div className='col-span-2 lg:col-span-1'>
                     <Label>Phone</Label>
-                    <Input type='text' defaultValue='+09 363 398 46' />
+                    <Input
+                      name='phone'
+                      type='text'
+                      defaultValue='+09 363 398 46'
+                    />
                   </div>
 
                   <div className='col-span-2'>
                     <Label>Bio</Label>
-                    <Input type='text' defaultValue='Team Manager' />
+                    <Input name='bio' type='text' defaultValue='Team Manager' />
                   </div>
                 </div>
               </div>

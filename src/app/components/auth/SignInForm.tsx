@@ -1,26 +1,44 @@
 'use client';
-import { ChevronLeftIcon, EyeIcon, EyeOffIcon } from 'lucide-react';
-import Link from 'next/link';
+import { EyeIcon, EyeOffIcon } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 
-import Checkbox from '@/app/components/form/input/Checkbox';
 import Input from '@/app/components/form/input/InputField';
 import Label from '@/app/components/form/Label';
+import { DEFAULT_TOAST_MESSAGE } from '@/app/constants/toast';
+import axiosClient from '@/app/services/axios';
 
 export default function SignInForm() {
+  const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
-  const [isChecked, setIsChecked] = useState(false);
+  // const [isChecked, setIsChecked] = useState(false);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const onSubmit = (data: any) => {
+    toast.promise(
+      axiosClient.post(`/signin`, data).then((res) => {
+        const response = res.data.data;
+        localStorage.setItem('token', response.access_token);
+        router.replace('/');
+      }),
+      {
+        ...DEFAULT_TOAST_MESSAGE,
+        success: 'Login Success',
+        error: 'Login Error or Unauthorized',
+      }
+    );
+  };
+
   return (
     <div className='flex flex-col flex-1 lg:w-1/2 w-full'>
-      <div className='w-full max-w-md sm:pt-10 mx-auto mb-5'>
-        <Link
-          href='/'
-          className='inline-flex items-center text-sm text-gray-500 transition-colors hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300'
-        >
-          <ChevronLeftIcon />
-          Back to dashboard
-        </Link>
-      </div>
       <div className='flex flex-col justify-center flex-1 w-full max-w-md mx-auto'>
         <div>
           <div className='mb-5 sm:mb-8'>
@@ -32,13 +50,27 @@ export default function SignInForm() {
             </p>
           </div>
 
-          <form>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <div className='space-y-6'>
               <div>
                 <Label>
                   Email <span className='text-error-500'>*</span>{' '}
                 </Label>
-                <Input placeholder='info@gmail.com' type='email' />
+                <Input
+                  type='email'
+                  name='email'
+                  placeholder='Enter your email'
+                  register={register}
+                  validation={{
+                    required: 'Email is required',
+                    pattern: {
+                      value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                      message: 'Invalid email address',
+                    },
+                  }}
+                  error={!!errors.email}
+                  hint={errors.email?.message as string}
+                />
               </div>
               <div>
                 <Label>
@@ -47,7 +79,17 @@ export default function SignInForm() {
                 <div className='relative'>
                   <Input
                     type={showPassword ? 'text' : 'password'}
+                    name='password'
                     placeholder='Enter your password'
+                    register={register}
+                    validation={{
+                      required: 'Password is required',
+                      minLength: {
+                        value: 6,
+                        message: 'Password must be at least 6 characters',
+                      },
+                    }}
+                    error={!!errors.password}
                   />
                   <span
                     onClick={() => setShowPassword(!showPassword)}
@@ -55,26 +97,34 @@ export default function SignInForm() {
                   >
                     {showPassword ? <EyeIcon /> : <EyeOffIcon />}
                   </span>
+                  {errors.password && (
+                    <p className='absolute left-0 -bottom-5 text-xs text-error-500'>
+                      {errors.password.message as string}
+                    </p>
+                  )}
                 </div>
               </div>
-              <div className='flex items-center justify-between'>
+              {/* <div className='flex items-center justify-between'>
                 <div className='flex items-center gap-3'>
                   <Checkbox checked={isChecked} onChange={setIsChecked} />
                   <span className='block font-normal text-gray-700 text-theme-sm dark:text-gray-400'>
                     Keep me logged in
                   </span>
                 </div>
-              </div>
+              </div> */}
               {/* <!-- Button --> */}
               <div>
-                <button className='flex items-center justify-center w-full px-4 py-3 text-sm font-medium text-white transition rounded-lg bg-brand-500 shadow-theme-xs hover:bg-brand-600'>
+                <button
+                  type='submit'
+                  className='mt-6 w-full px-4 py-3 text-sm font-medium text-white transition rounded-lg bg-brand-500 shadow-theme-xs hover:bg-brand-600'
+                >
                   Sign In
                 </button>
               </div>
             </div>
           </form>
 
-          <div className='mt-5'>
+          {/* <div className='mt-5'>
             <p className='text-sm font-normal text-center text-gray-700 dark:text-gray-400 sm:text-start'>
               Don&apos;t have an account?&nbsp;
               <Link
@@ -84,7 +134,7 @@ export default function SignInForm() {
                 Sign Up
               </Link>
             </p>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
