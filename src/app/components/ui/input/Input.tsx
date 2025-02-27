@@ -79,14 +79,14 @@ const Input: React.FC<Props> = ({
         <label
           htmlFor={name}
           className={clsxm(
-            'px-1 text-xs font-medium transition-all duration-200 ease-in-out',
+            'px-1 text-sm font-medium transition-all duration-200 ease-in-out',
             disabled ? 'bg-transparent' : 'bg-white',
             errors[name]
               ? 'text-red-500'
               : variant === 'primary'
               ? 'text-gray-900'
               : variant === 'secondary'
-              ? 'text-redSecondary'
+              ? 'text-blue-500'
               : 'text-[#afc8df]'
           )}
         >
@@ -102,7 +102,7 @@ const Input: React.FC<Props> = ({
             : variant === 'primary'
             ? 'border-black'
             : variant === 'secondary'
-            ? 'border-redSecondary'
+            ? 'border-blue-500'
             : 'border border-[#e6e8ea]'
         )}
       >

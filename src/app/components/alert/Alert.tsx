@@ -76,7 +76,7 @@ const Alert: React.FC<Props> = ({
               <div className='mt-5 flex items-center justify-center space-x-5 p-2'>
                 {!disableIcon && (
                   <BsQuestionSquareFill
-                    className='h-8 w-8 text-redDark'
+                    className='h-8 w-8 text-blue-600'
                     aria-hidden='true'
                   />
                 )}
