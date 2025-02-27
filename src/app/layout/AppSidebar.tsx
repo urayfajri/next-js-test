@@ -5,7 +5,6 @@ import {
   DatabaseIcon,
   FlipHorizontal,
   HomeIcon,
-  PlugIcon,
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -42,16 +41,16 @@ const navItems: NavItem[] = [
   },
 ];
 
-const othersItems: NavItem[] = [
-  {
-    icon: <PlugIcon />,
-    name: 'Authentication',
-    subItems: [
-      { name: 'Sign In', path: '/signin', pro: false },
-      { name: 'Sign Up', path: '/signup', pro: false },
-    ],
-  },
-];
+// const othersItems: NavItem[] = [
+//   {
+//     icon: <PlugIcon />,
+//     name: 'Authentication',
+//     subItems: [
+//       { name: 'Sign In', path: '/signin', pro: false },
+//       { name: 'Sign Up', path: '/signup', pro: false },
+//     ],
+//   },
+// ];
 
 const AppSidebar: React.FC = () => {
   const { isExpanded, isMobileOpen, isHovered, setIsHovered } = useSidebar();
@@ -199,7 +198,9 @@ const AppSidebar: React.FC = () => {
     // Check if the current path matches any submenu item
     let submenuMatched = false;
     ['main', 'others'].forEach((menuType) => {
-      const items = menuType === 'main' ? navItems : othersItems;
+      // const items = menuType === 'main' ? navItems : othersItems;
+
+      const items = navItems;
       items.forEach((nav, index) => {
         if (nav.subItems) {
           nav.subItems.forEach((subItem) => {
@@ -315,7 +316,7 @@ const AppSidebar: React.FC = () => {
               {renderMenuItems(navItems, 'main')}
             </div>
 
-            <div className=''>
+            {/* <div className=''>
               <h2
                 className={`mb-4 text-xs uppercase flex leading-[20px] text-gray-400 ${
                   !isExpanded && !isHovered
@@ -330,7 +331,7 @@ const AppSidebar: React.FC = () => {
                 )}
               </h2>
               {renderMenuItems(othersItems, 'others')}
-            </div>
+            </div> */}
           </div>
         </nav>
       </div>

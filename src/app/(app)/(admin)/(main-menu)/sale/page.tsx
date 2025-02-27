@@ -15,12 +15,13 @@ import Button from '@/app/components/ui/button/Button';
 import SpinnerLoading from '@/app/components/ui/loading/SpinnerLoading';
 import { SALE_API, SALE_TOAST } from '@/app/constants/enums/sale/enum';
 import { DEFAULT_TOAST_MESSAGE } from '@/app/constants/toast';
+import withAuth from '@/app/hooks/withAuth';
 import axiosClient from '@/app/services/axios';
 import { ApiReturnPagination } from '@/app/types/common/type';
 import { DataTableColumn } from '@/app/types/data-table/type';
 import { Sale } from '@/app/types/model/sale/type';
 
-export default function MainMenuSale() {
+function MainMenuSale() {
   // eslint-disable-next-line unused-imports/no-unused-vars
   const [isAddModalOpen, setIsAddModalOpen] = React.useState<boolean>(false);
   const [isDetailModalOpen, setIsDetailModalOpen] =
@@ -163,3 +164,5 @@ export default function MainMenuSale() {
     </>
   );
 }
+
+export default withAuth(MainMenuSale);

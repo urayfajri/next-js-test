@@ -17,16 +17,20 @@ export default function BasicForm() {
       <Form onSubmit={handleSubmit}>
         <div className='grid grid-cols-1 gap-6 sm:grid-cols-2'>
           <div>
-            <Input type='text' placeholder='Name' />
+            <Input name='name' type='text' placeholder='Name' />
           </div>
           <div>
-            <Input type='text' placeholder='Email address' />
+            <Input name='email' type='text' placeholder='Email address' />
           </div>
           <div className='col-span-full'>
-            <Input type='text' placeholder='Password' />
+            <Input name='password' type='text' placeholder='Password' />
           </div>
           <div className='col-span-full'>
-            <Input type='text' placeholder='Confirm Password' />
+            <Input
+              name='confirmPassword'
+              type='text'
+              placeholder='Confirm Password'
+            />
           </div>
           <div className='col-span-full'>
             <Button className='w-full' size='sm'>

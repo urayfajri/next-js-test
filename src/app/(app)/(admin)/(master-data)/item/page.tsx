@@ -14,12 +14,13 @@ import Button from '@/app/components/ui/button/Button';
 import SpinnerLoading from '@/app/components/ui/loading/SpinnerLoading';
 import { ITEM_API, ITEM_TOAST } from '@/app/constants/enums/item/enum';
 import { DEFAULT_TOAST_MESSAGE } from '@/app/constants/toast';
+import withAuth from '@/app/hooks/withAuth';
 import axiosClient from '@/app/services/axios';
 import { ApiReturnPagination } from '@/app/types/common/type';
 import { DataTableColumn } from '@/app/types/data-table/type';
 import { Item } from '@/app/types/model/item/type';
 
-export default function MasterDataItem() {
+function MasterDataItem() {
   const [isAddModalOpen, setIsAddModalOpen] = React.useState<boolean>(false);
   const [isAlertDeleteOpen, setIsAlertDeleteOpen] =
     React.useState<boolean>(false);
@@ -139,3 +140,5 @@ export default function MasterDataItem() {
     </>
   );
 }
+
+export default withAuth(MasterDataItem);

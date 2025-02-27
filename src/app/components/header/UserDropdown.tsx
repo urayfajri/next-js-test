@@ -3,9 +3,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react';
 
+import useAuthorizationStore from '@/app/providers/store/useAuthorizationStore';
+
 import { Dropdown } from '../ui/dropdown/Dropdown';
 
 export default function UserDropdown() {
+  const { user, logout } = useAuthorizationStore();
+
   const [isOpen, setIsOpen] = useState(false);
 
   function toggleDropdown(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
@@ -16,6 +20,7 @@ export default function UserDropdown() {
   function closeDropdown() {
     setIsOpen(false);
   }
+
   return (
     <div className='relative'>
       <button
@@ -31,7 +36,9 @@ export default function UserDropdown() {
           />
         </span>
 
-        <span className='block mr-1 font-medium text-theme-sm'>Musharof</span>
+        <span className='block mr-1 font-medium text-theme-sm'>
+          {user?.email}
+        </span>
 
         <svg
           className={`stroke-gray-500 dark:stroke-gray-400 transition-transform duration-200 ${
@@ -60,11 +67,12 @@ export default function UserDropdown() {
       >
         <div>
           <span className='block font-medium text-gray-700 text-theme-sm dark:text-gray-400'>
-            Musharof Chowdhury
+            {user?.email}
           </span>
         </div>
         <Link
           href='/signin'
+          onClick={logout}
           className='flex items-center gap-3 px-3 py-2 mt-3 font-medium text-gray-700 rounded-lg group text-theme-sm hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300'
         >
           <svg

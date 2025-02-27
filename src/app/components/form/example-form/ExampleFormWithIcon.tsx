@@ -24,6 +24,7 @@ export default function ExampleFormWithIcon() {
         <div className='grid grid-cols-1 gap-6'>
           <div className='relative'>
             <Input
+              name='username'
               type='text'
               placeholder='Username'
               id='username'
@@ -35,6 +36,7 @@ export default function ExampleFormWithIcon() {
           </div>{' '}
           <div className='relative'>
             <Input
+              name='email'
               type='text'
               placeholder='Email Address'
               id='email'
@@ -46,6 +48,7 @@ export default function ExampleFormWithIcon() {
           </div>{' '}
           <div className='relative'>
             <Input
+              name='password'
               type='password'
               placeholder='Password'
               id='password'
@@ -57,6 +60,7 @@ export default function ExampleFormWithIcon() {
           </div>{' '}
           <div className='relative'>
             <Input
+              name='password'
               type='password'
               placeholder='Confirm Password'
               id='confirm-password'

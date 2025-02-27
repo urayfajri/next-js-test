@@ -17,6 +17,7 @@ export default function InputStates() {
     return isValidEmail;
   };
 
+  // eslint-disable-next-line unused-imports/no-unused-vars
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setEmail(value);
@@ -32,10 +33,10 @@ export default function InputStates() {
         <div>
           <Label>Email</Label>
           <Input
+            name='email'
             type='email'
             defaultValue={email}
             error={error}
-            onChange={handleEmailChange}
             placeholder='Enter your email'
             hint={error ? 'This is an invalid email address.' : ''}
           />
@@ -45,10 +46,10 @@ export default function InputStates() {
         <div>
           <Label>Email</Label>
           <Input
+            name='email'
             type='email'
             defaultValue={email}
             success={!error}
-            onChange={handleEmailChange}
             placeholder='Enter your email'
             hint={!error ? 'Valid email!' : ''}
           />
@@ -58,6 +59,7 @@ export default function InputStates() {
         <div>
           <Label>Email</Label>
           <Input
+            name='email'
             type='text'
             defaultValue='disabled@example.com'
             disabled={true}

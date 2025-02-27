@@ -38,15 +38,26 @@ export default function ExampleFormOne() {
         <div className='grid grid-cols-1 gap-6 sm:grid-cols-2'>
           <div className='col-span-2 sm:col-span-1'>
             <Label htmlFor='firstName'>First Name</Label>
-            <Input type='text' placeholder='Enter first name' id='firstName' />
+            <Input
+              name='firstName'
+              type='text'
+              placeholder='Enter first name'
+              id='firstName'
+            />
           </div>
           <div className='col-span-2 sm:col-span-1'>
             <Label htmlFor='lastName'>Last Name</Label>
-            <Input type='text' placeholder='Enter last name' id='firstName' />
+            <Input
+              name='lastName'
+              type='text'
+              placeholder='Enter last name'
+              id='firstName'
+            />
           </div>
           <div className='col-span-2'>
             <Label htmlFor='email'>Email</Label>
             <Input
+              name='email'
               type='text'
               placeholder='Enter email address'
               id='firstName'
