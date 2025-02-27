@@ -1,13 +1,13 @@
 import moment from 'moment';
 import * as React from 'react';
+import useSWR from 'swr';
 
 import Modal from '@/app/components/ui/custom-modal/Modal';
-import { Sale } from '@/app/types/model/sale/type';
-import { ApiReturn } from '@/app/types/common/type';
-import useSWR from 'swr';
 import { SALE_API } from '@/app/constants/enums/sale/enum';
-import { SaleDetail } from '../../../../../../types/model/sale/type';
 import totalFormatter from '@/app/services/totalformatter';
+import { ApiReturn } from '@/app/types/common/type';
+import { Sale } from '@/app/types/model/sale/type';
+
 type Props = {
   isOpen: boolean;
   setIsOpen: (b: boolean) => void;
