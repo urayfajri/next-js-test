@@ -1,9 +1,10 @@
 'use client';
 import {
+  BookIcon,
   ChevronDownIcon,
+  DatabaseIcon,
   FlipHorizontal,
-  GridIcon,
-  ListIcon,
+  HomeIcon,
   PlugIcon,
 } from 'lucide-react';
 import Image from 'next/image';
@@ -22,13 +23,18 @@ type NavItem = {
 
 const navItems: NavItem[] = [
   {
-    icon: <GridIcon />,
+    icon: <HomeIcon />,
     name: 'Dashboard',
-    subItems: [{ name: 'Sales', path: '/', pro: false }],
+    path: '/',
+  },
+  {
+    icon: <BookIcon />,
+    name: 'Main Menu',
+    subItems: [{ name: 'Sales', path: '/sale', pro: false }],
   },
   {
     name: 'Master Data',
-    icon: <ListIcon />,
+    icon: <DatabaseIcon />,
     subItems: [
       { name: 'Item', path: '/item', pro: false },
       { name: 'Customer', path: '/customer', pro: false },
