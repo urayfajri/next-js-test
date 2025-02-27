@@ -75,12 +75,12 @@ export default function withAuth<T extends WithAuthProps = WithAuthProps>(
             router.replace('/');
           }
         }
-        // Prevent unauthenticated user from accessing protected pages
-        // else {
-        //   if (routePageType !== 'auth') {
-        //     router.replace('/signin');
-        //   }
-        // }
+        //Prevent unauthenticated user from accessing protected pages
+        else {
+          if (routePageType !== 'auth') {
+            router.replace('/signin');
+          }
+        }
       }
     }, [isAuthenticated, isLoading, router, user]);
 

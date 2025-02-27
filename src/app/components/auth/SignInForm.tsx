@@ -8,12 +8,15 @@ import toast from 'react-hot-toast';
 import Input from '@/app/components/form/input/InputField';
 import Label from '@/app/components/form/Label';
 import { DEFAULT_TOAST_MESSAGE } from '@/app/constants/toast';
+import useAuthorizationStore from '@/app/providers/store/useAuthorizationStore';
 import axiosClient from '@/app/services/axios';
 
 export default function SignInForm() {
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   // const [isChecked, setIsChecked] = useState(false);
+
+  const { setIsAuthenticated } = useAuthorizationStore();
 
   const {
     register,
@@ -27,6 +30,7 @@ export default function SignInForm() {
       axiosClient.post(`/signin`, data).then((res) => {
         const response = res.data.data;
         localStorage.setItem('token', response.access_token);
+        setIsAuthenticated(true);
         router.replace('/');
       }),
       {
