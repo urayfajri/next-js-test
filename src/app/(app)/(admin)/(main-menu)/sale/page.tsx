@@ -21,6 +21,7 @@ import { DataTableColumn } from '@/app/types/data-table/type';
 import { Sale } from '@/app/types/model/sale/type';
 
 export default function MainMenuSale() {
+  // eslint-disable-next-line unused-imports/no-unused-vars
   const [isAddModalOpen, setIsAddModalOpen] = React.useState<boolean>(false);
   const [isDetailModalOpen, setIsDetailModalOpen] =
     React.useState<boolean>(false);
