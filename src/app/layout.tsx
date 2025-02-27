@@ -9,6 +9,8 @@ import 'swiper/css/autoplay';
 import '@/styles/globals.css';
 import '@/styles/colors.css';
 
+import Toast from '@/app/components/toast/Toast';
+import QueryProvider from '@/app/context/QueryContext';
 import { SidebarProvider } from '@/app/context/SidebarContext';
 import { ThemeProvider } from '@/app/context/ThemeContext';
 import { siteConfig } from '@/constant/config';
@@ -63,12 +65,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang='en'>
-      <body className={`${outfit.variable} dark:bg-gray-900`}>
-        <ThemeProvider>
-          <SidebarProvider>{children}</SidebarProvider>
-        </ThemeProvider>
-      </body>
-    </html>
+    <QueryProvider>
+      <html lang='en'>
+        <body className={`${outfit.variable} dark:bg-gray-900`}>
+          <Toast />
+          <ThemeProvider>
+            <SidebarProvider>{children}</SidebarProvider>
+          </ThemeProvider>
+        </body>
+      </html>
+    </QueryProvider>
   );
 }
