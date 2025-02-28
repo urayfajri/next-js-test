@@ -3,6 +3,11 @@ import { ApexOptions } from 'apexcharts';
 import { DotIcon } from 'lucide-react';
 import dynamic from 'next/dynamic';
 import { useState } from 'react';
+import useSWR from 'swr';
+
+import { SALE_API } from '@/app/constants/enums/sale/enum';
+import { ApiReturn } from '@/app/types/common/type';
+import { MonthlySale } from '@/app/types/model/sale/type';
 
 import { Dropdown } from '../ui/dropdown/Dropdown';
 import { DropdownItem } from '../ui/dropdown/DropdownItem';
@@ -13,6 +18,44 @@ const ReactApexChart = dynamic(() => import('react-apexcharts'), {
 });
 
 export default function MonthlySalesChart() {
+  const { data: apiResponse } = useSWR<ApiReturn<MonthlySale[]>>(
+    SALE_API.MONTH_SALES
+  );
+
+  const saleMonth = apiResponse?.data ?? [];
+
+  // Define all months to ensure correct order
+  const months = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
+  ];
+
+  // Create a sales data array matching the month order
+  const salesData = months.map((month, index) => {
+    // Find matching sales data for the month
+    const sale = saleMonth.find(
+      (s) => Number(s.month.split('-')[1]) === index + 1
+    );
+    return sale ? sale.totalSales : 0; // Default to 0 if no data
+  });
+
+  const series = [
+    {
+      name: 'Sales',
+      data: salesData,
+    },
+  ];
+
   const options: ApexOptions = {
     colors: ['#465fff'],
     chart: {
@@ -92,12 +135,6 @@ export default function MonthlySalesChart() {
       },
     },
   };
-  const series = [
-    {
-      name: 'Sales',
-      data: [168, 385, 201, 298, 187, 195, 291, 110, 215, 390, 280, 112],
-    },
-  ];
   const [isOpen, setIsOpen] = useState(false);
 
   function toggleDropdown() {
