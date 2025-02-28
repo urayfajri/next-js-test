@@ -1,5 +1,6 @@
 export const SALE_API = {
   BASE: '/sales',
+  MONTH_SALES: '/monthly-sales',
 };
 
 export const SALE_TOAST = {

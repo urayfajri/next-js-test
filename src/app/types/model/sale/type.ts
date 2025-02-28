@@ -19,3 +19,8 @@ export type SaleRequest = {
   customerid?: number;
   custname: string;
 };
+
+export type MonthlySale = {
+  month: string;
+  totalSales: number;
+};
