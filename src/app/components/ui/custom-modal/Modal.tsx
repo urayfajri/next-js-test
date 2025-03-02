@@ -29,7 +29,7 @@ const Modal: React.FC<ModalProps> = ({
     <Transition.Root show={isOpen} as={Fragment}>
       <Dialog
         as='div'
-        className='fixed inset-0 z-[999999] overflow-y-auto'
+        className='fixed inset-0 z-[9999] overflow-y-auto'
         initialFocus={cancelButtonRef}
         onClose={setIsOpen}
       >
