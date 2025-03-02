@@ -16,8 +16,14 @@ export type SaleDetail = {
 };
 
 export type SaleRequest = {
-  customerid?: number;
-  custname: string;
+  docno?: number;
+  docdate?: string;
+  customerid: number;
+  items: {
+    itemid: number;
+    qty?: number;
+    unitprice?: number;
+  }[];
 };
 
 export type MonthlySale = {

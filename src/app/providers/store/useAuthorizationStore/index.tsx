@@ -30,8 +30,10 @@ const useAuthorizationStore = create<AuthorizationStoreType>((set) => ({
     );
   },
   logout: () => {
-    toast.promise(
-      axiosClient.post(`/signout`).then(() => {
+    const logoutHandler = async () => {
+      try {
+        await axiosClient.post(`/signout`);
+      } finally {
         localStorage.removeItem('token');
         set(
           produce<AuthorizationStoreType>((state) => {
@@ -39,13 +41,14 @@ const useAuthorizationStore = create<AuthorizationStoreType>((set) => ({
             state.user = null;
           })
         );
-      }),
-      {
-        ...DEFAULT_TOAST_MESSAGE,
-        success: 'Logout Success',
-        error: 'Logout Error',
       }
-    );
+    };
+
+    toast.promise(logoutHandler(), {
+      ...DEFAULT_TOAST_MESSAGE,
+      success: 'Logout Success',
+      error: 'Logout Error',
+    });
   },
   startLoading: () => {
     set(
