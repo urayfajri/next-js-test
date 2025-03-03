@@ -1,7 +1,12 @@
-import { PencilIcon, PlusIcon } from 'lucide-react';
+import { PencilIcon, PlusIcon, TrashIcon } from 'lucide-react';
 import moment from 'moment';
 import * as React from 'react';
-import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
+import {
+  FormProvider,
+  SubmitHandler,
+  useFieldArray,
+  useForm,
+} from 'react-hook-form';
 import toast from 'react-hot-toast';
 
 import Button from '@/app/components/ui/button/Button';
@@ -57,7 +62,12 @@ const AddSaleModal: React.FC<Props> = ({
     defaultValues: defaultValues,
   });
 
-  const { handleSubmit, reset, setValue } = methods;
+  const { control, handleSubmit, reset, setValue } = methods;
+
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: 'items',
+  });
 
   React.useEffect(() => {
     if (sale) {
@@ -86,6 +96,7 @@ const AddSaleModal: React.FC<Props> = ({
       qty: Number(item.qty),
       unitprice: Number(item.unitprice),
     }));
+
     if (sale) {
       toast.promise(
         axiosClient
@@ -172,63 +183,73 @@ const AddSaleModal: React.FC<Props> = ({
                 ))}
               </InputOption>
             </div>
-            <div className='md:pb-3'>
-              <div className='flex items-center'>
-                <span className='rounded-xl bg-[#c2d7f9] py-0.5 px-[13px] text-sm  text-blue-600'>
-                  Item Information
-                </span>
-                {/* <div className='relative inline-block'>
-                  <div
-                    className='rounded-full ml-2 cursor-pointer'
-                    onMouseEnter={() => setShowTooltip(true)}
-                    onMouseLeave={() => setShowTooltip(false)}
-                    onClick={() => setShowCustomerView(true)}
+            <div className='grid md:grid-cols-1 md:gap-5'>
+              <div className='md:pb-3'>
+                <div className='flex items-center justify-between pb-2'>
+                  <span className='rounded-xl bg-[#c2d7f9] py-0.5 px-[13px] text-sm text-blue-600'>
+                    Item Information
+                  </span>
+                  <button
+                    type='button'
+                    className='bg-blue-500 text-white px-2 py-1 rounded-md flex items-center gap-1'
+                    onClick={() => append({ itemid: 0 })}
                   >
-                    <BsPersonCircle className='h-4 w-4' aria-hidden='true' />
-                  </div>
-                  {showTooltip && (
-                    <div className='absolute left-1/2 transform -translate-x-1/2 bottom-full mb-2 px-2 py-1 bg-redPrimary text-white text-xs rounded-xl whitespace-nowrap'>
-                      Lihat Pelanggan
+                    <PlusIcon className='w-4 h-4' /> Add Item
+                  </button>
+                </div>
+
+                {fields.map((field, index) => (
+                  <div key={field.id} className='border p-3 rounded-lg mb-2'>
+                    <InputOption
+                      label='Item'
+                      name={`items.${index}.itemid`}
+                      variant='secondary'
+                      required
+                      validation={{
+                        required: 'Item is required',
+                      }}
+                    >
+                      {itemEntitites?.map((data) => (
+                        <option value={data.itemid} key={data.itemid}>
+                          {data.itemname}
+                        </option>
+                      ))}
+                    </InputOption>
+
+                    <div className='grid md:grid-cols-2 md:gap-5'>
+                      <Input
+                        label='Qty'
+                        name={`items.${index}.qty`}
+                        type='number'
+                        variant='secondary'
+                        required
+                        validation={{
+                          required: 'Item Qty is required',
+                        }}
+                      />
+                      <Input
+                        label='Price'
+                        name={`items.${index}.unitprice`}
+                        type='number'
+                        variant='secondary'
+                        required
+                        validation={{
+                          required: 'Item Price is required',
+                        }}
+                      />
                     </div>
-                  )}
-                </div> */}
-              </div>
-              <InputOption
-                label='Item'
-                name='items[0].itemid'
-                variant='secondary'
-                required
-                validation={{
-                  required: 'Item is required',
-                }}
-              >
-                {itemEntitites?.map((data) => (
-                  <option value={data.itemid} key={data.itemid}>
-                    {data.itemname}
-                  </option>
+
+                    {fields.length > 1 && (
+                      <button
+                        type='button'
+                        className='bg-red-500 text-white px-2 py-1 rounded-md flex items-center gap-1 mt-2'
+                        onClick={() => remove(index)}
+                      >
+                        <TrashIcon className='w-4 h-4' /> Remove
+                      </button>
+                    )}
+                  </div>
                 ))}
-              </InputOption>
-              <div className='grid md:grid-cols-2 md:gap-5'>
-                <Input
-                  label='Qty'
-                  name='items[0].qty'
-                  type='number'
-                  variant='secondary'
-                  required
-                  validation={{
-                    required: 'Item Qty is required',
-                  }}
-                />
-                <Input
-                  label='Price'
-                  name='items[0].unitprice'
-                  type='number'
-                  variant='secondary'
-                  required
-                  validation={{
-                    required: 'Item Price is required',
-                  }}
-                />
               </div>
             </div>
           </div>
