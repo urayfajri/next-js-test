@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react';
 import { Metadata } from 'next';
 import { Outfit } from 'next/font/google';
 import * as React from 'react';
@@ -69,6 +70,7 @@ export default function RootLayout({
       <html lang='en'>
         <body className={`${outfit.variable} dark:bg-gray-900`}>
           <Toast />
+          <Analytics />
           <ThemeProvider>
             <SidebarProvider>{children}</SidebarProvider>
           </ThemeProvider>
